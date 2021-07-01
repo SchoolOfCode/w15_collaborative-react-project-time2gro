@@ -1,23 +1,29 @@
+import React, {useState} from 'react';
 import logo from '../../logo.svg';
 import './App.css';
+import HomePage from '../HomePage';
+import VegetablePage from '../VegetablePage';
+
 
 function App() {
+  const [isHomePage, setIsHomePage] = useState(true);
+  const [isVegetablePage, setIsVegetablePage] = useState(false);
+  function handleClick(){
+    setIsHomePage(!isHomePage)
+    setIsVegetablePage(!isVegetablePage)
+  }
+  let pageToDisplay 
+  if (isHomePage === true){
+    pageToDisplay = <HomePage/>
+  }
+  if (isVegetablePage === true){
+    pageToDisplay = <VegetablePage/>
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello</h1>
+      {pageToDisplay}
+      <button onClick = {handleClick}>Change page</button>
     </div>
   );
 }
