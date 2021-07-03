@@ -5,13 +5,15 @@ import Button from "../Button";
 import Footer from "../Footer";
 import NoButtonCard from "../NoButtonCard";
 
-export default function VegetablePage() {
+export default function VegetablePage(props) {
   return (
     <div>
       Vegetable
       <Banner />
-      <NoButtonCard />
-      <Button />
+      <NoButtonCard heading={props.heading} paragraph={props.paragraph} />
+      <NoButtonCard heading={props.heading} paragraph={props.paragraph} />
+      <NoButtonCard heading={props.heading} paragraph={props.paragraph} />
+      <Button handleClick={props.handleHomeClick} />
       <Footer />
     </div>
   );
