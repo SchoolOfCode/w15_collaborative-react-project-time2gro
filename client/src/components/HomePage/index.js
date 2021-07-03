@@ -4,14 +4,16 @@ import Banner from "../Banner";
 import Footer from "../Footer";
 import NoButtonCard from "../NoButtonCard";
 import SearchCard from "../SearchCard";
+import { aboutParagraph } from "../../utils/text";
+import { aboutHeading } from "../../utils/text";
 
 export default function HomePage(props) {
   return (
     <div>
       Home
       <Banner />
-      <NoButtonCard />
-      <SearchCard handleSearch={props.handleSearch}/>
+      <NoButtonCard paragraph={aboutParagraph} heading={aboutHeading} />
+      <SearchCard handleSearch={props.handleSearch} />
       <Footer />
     </div>
   );
