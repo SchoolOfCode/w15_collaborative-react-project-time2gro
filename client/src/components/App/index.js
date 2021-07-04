@@ -32,9 +32,11 @@ function App() {
   }
 
   function handleSearchClick() {
-    const current = apiData.find(
+    const index = apiData.findIndex(
       (vegetable) => vegetable.name === vegetableToSearch
     );
+
+    let current = [...apiData.slice(index, index + 1)];
 
     setCurrentVegetable(current);
     setIsHomePage(false);

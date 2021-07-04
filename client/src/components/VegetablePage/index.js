@@ -6,31 +6,38 @@ import Footer from '../Footer';
 import NoButtonCard from '../NoButtonCard';
 
 export default function VegetablePage(props) {
+  const {
+    name,
+    description,
+    optimal_sun,
+    spacing,
+    when_to_plant,
+    watering,
+    feeding,
+    harvesting,
+  } = props.currentVegetable[0];
   return (
     <div>
       <Banner />
-      <NoButtonCard
-        heading={props.currentVegetable.name}
-        paragraph={props.currentVegetable.description}
-      />
+      <NoButtonCard heading={name} paragraph={description} />
       <NoButtonCard
         heading='Sun, Space & Time'
         subheadingOne='Optimal Sun'
-        paragraphOne={props.currentVegetable.optimal_sun}
+        paragraphOne={optimal_sun}
         subheadingTwo='Space'
-        paragraphTwo={props.currentVegetable.spacing}
+        paragraphTwo={spacing}
         subheadingThree='When'
-        paragraphThree={props.currentVegetable.when_to_plant}
+        paragraphThree={when_to_plant}
         detailed={true}
       />
       <NoButtonCard
         heading='Nurturing'
         subheadingOne='Watering'
-        paragraphOne={props.currentVegetable.watering}
+        paragraphOne={watering}
         subheadingTwo='Feeding'
-        paragraphTwo={props.currentVegetable.feeding}
+        paragraphTwo={feeding}
         subheadingThree='Harvesting'
-        paragraphThree={props.currentVegetable.harvesting}
+        paragraphThree={harvesting}
         detailed={true}
       />
       <Button handleClick={props.handleHomeClick} icon='home' />
