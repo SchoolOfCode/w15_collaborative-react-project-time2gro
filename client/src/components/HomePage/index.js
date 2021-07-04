@@ -12,7 +12,11 @@ export default function HomePage(props) {
     <div>
       <Banner />
       <NoButtonCard paragraph={aboutParagraph} heading={aboutHeading} />
-      <SearchCard handleSearch={props.handleSearch} />
+      <SearchCard
+        handleSearch={props.handleSearch}
+        inputValue={props.inputValue}
+        handleSearchClick={props.handleSearchClick}
+      />
       <Footer />
     </div>
   );

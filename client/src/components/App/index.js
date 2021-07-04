@@ -6,8 +6,8 @@ import logo from '../../logo.svg';
 import './App.css';
 
 function App() {
-  const [isHomePage, setIsHomePage] = useState(false);
-  const [isVegetablePage, setIsVegetablePage] = useState(true);
+  const [isHomePage, setIsHomePage] = useState(true);
+  const [isVegetablePage, setIsVegetablePage] = useState(false);
   const [vegetableToSearch, setVegetableToSearch] = useState('');
   const [apiData, setApiData] = useState([]);
   useEffect(() => {
@@ -30,9 +30,20 @@ function App() {
     setVegetableToSearch(event.target.value);
   }
 
+  function handleSearchClick() {
+    setIsHomePage(false);
+    setIsVegetablePage(true);
+  }
+
   let pageToDisplay;
   if (isHomePage === true) {
-    pageToDisplay = <HomePage handleSearch={handleSearch} />;
+    pageToDisplay = (
+      <HomePage
+        handleSearch={handleSearch}
+        inputValue={vegetableToSearch}
+        handleSearchClick={handleSearchClick}
+      />
+    );
   }
   if (isVegetablePage === true) {
     pageToDisplay = <VegetablePage handleHomeClick={handleHomeClick} />;

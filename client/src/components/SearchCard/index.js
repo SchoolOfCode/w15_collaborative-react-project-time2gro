@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export default function SearchCard(props) {
-    return (
-        
-          <div className='card'>
-          <div className='card-body'>
+  return (
+    <div className='card'>
+      <div className='card-body'>
         <h5 className='card-title'>About</h5>
         <p className='card-text'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quo
@@ -12,10 +11,9 @@ export default function SearchCard(props) {
           Quisquam sint eaque asperiores repellat perspiciatis accusantium eius,
           ratione fugit.
         </p>
-        <input onChange={props.handleSearch}></input>
-        <button>Search</button>
+        <input value={props.inputValue} onChange={props.handleSearch}></input>
+        <button onClick={props.handleSearchClick}>Search</button>
       </div>
-    </div> 
-     
-    )
+    </div>
+  );
 }
