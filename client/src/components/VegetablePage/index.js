@@ -17,7 +17,18 @@ export default function VegetablePage(props) {
     harvesting,
   } = props.currentVegetable[0];
   return (
-    <div>
+    
+          <Banner />
+          <NoButtonCard heading={props.heading} paragraph={props.paragraph} />
+          <NoButtonCard heading={props.heading} paragraph={props.paragraph} />
+          <NoButtonCard heading={props.heading} paragraph={props.paragraph} />
+          <Button handleClick={props.handleHomeClick} />
+          <Footer />
+
+    <div className="container">
+      <div className="row">
+        <div className="col"></div>
+        <div className="col-lg-10">
       <Banner />
       <NoButtonCard heading={name} paragraph={description} />
       <NoButtonCard
@@ -42,6 +53,11 @@ export default function VegetablePage(props) {
       />
       <Button handleClick={props.handleHomeClick} icon='home' />
       <Footer />
+        
+         </div>
+        <div className="col"></div>
+      </div>
+
     </div>
   );
 }

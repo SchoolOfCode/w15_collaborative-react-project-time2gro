@@ -5,6 +5,7 @@ export default function Footer() {
     <footer>
       <p>Footer</p>
       <p>Goes here</p>
+
     </footer>
   );
 }

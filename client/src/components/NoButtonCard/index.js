@@ -25,15 +25,18 @@ export default function NoButtonCard(props) {
   }
 
   return (
-    <div className='card'>
-      {/* <img
-        className='card-img-top'
+    <div className="card border-secondary mb-3">
+      <img
+        className="card-img-top"
         src={aboutImg}
-        alt='vegetables'
-        width='250px'
-        height='200px'
-      ></img> */}
-      {text}
+        alt="vegetables"
+        height="150px"
+        width="300px"
+      ></img>
+      <div className="card-body">
+        {text}
+      </div>
+
     </div>
   );
 }

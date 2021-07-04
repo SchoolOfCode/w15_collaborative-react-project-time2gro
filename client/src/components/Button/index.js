@@ -3,6 +3,7 @@ import React from 'react';
 // Need to change className for icons - use an object for this in utils
 
 export default function Button(props) {
+
   let button;
   if (props.icon) {
     button = (

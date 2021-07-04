@@ -4,7 +4,7 @@ import logo from "../../img/logo.png";
 export default function Banner() {
   return (
     <div>
-      <img src={logo} alt="logo" width="400px" height="400px"></img>
+      <img src={logo} alt="logo" width="280px" height="280px"></img>
     </div>
   );
 }
