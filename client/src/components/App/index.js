@@ -10,6 +10,7 @@ function App() {
   const [isVegetablePage, setIsVegetablePage] = useState(false);
   const [vegetableToSearch, setVegetableToSearch] = useState('');
   const [apiData, setApiData] = useState([]);
+  const [currentVegetable, setCurrentVegetable] = useState({});
   useEffect(() => {
     async function fetchVegetable() {
       const requestUrl = await fetch(
@@ -31,6 +32,12 @@ function App() {
   }
 
   function handleSearchClick() {
+    // set current vegetable to be the vegetableToSearch
+    const current = apiData.find(
+      (vegetable) => vegetable.name === vegetableToSearch
+    );
+
+    setCurrentVegetable(current);
     setIsHomePage(false);
     setIsVegetablePage(true);
   }
@@ -46,7 +53,12 @@ function App() {
     );
   }
   if (isVegetablePage === true) {
-    pageToDisplay = <VegetablePage handleHomeClick={handleHomeClick} />;
+    pageToDisplay = (
+      <VegetablePage
+        currentVegetable={currentVegetable}
+        handleHomeClick={handleHomeClick}
+      />
+    );
   }
 
   return <div className='App'>{pageToDisplay}</div>;
