@@ -1,14 +1,18 @@
-import React from "react";
+import React from 'react';
+
+// Need to change className for icons - use an object for this in utils
 
 export default function Button(props) {
-  return (
-    <div>
-      <button
-        onClick={props.handleClick}
-        className={(props.icon, "btn btn-primary")}
-      >
+
+  let button;
+  if (props.icon) {
+    button = (
+      <i onClick={props.handleClick} className={`${props.icon} fas fa-home`}>
         {props.buttonText}
-      </button>
-    </div>
-  );
+      </i>
+    );
+  } else {
+    button = <button>{props.buttonText}</button>;
+  }
+  return button;
 }

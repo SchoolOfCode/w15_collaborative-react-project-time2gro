@@ -1,14 +1,26 @@
-import React, { useState } from "react";
-import HomePage from "../HomePage";
-import VegetablePage from "../VegetablePage";
+import React, { useState, useEffect } from 'react';
+import HomePage from '../HomePage';
+import VegetablePage from '../VegetablePage';
 
-import logo from "../../logo.svg";
-import "./App.css";
+import logo from '../../logo.svg';
+import './App.css';
 
 function App() {
-  const [isHomePage, setIsHomePage] = useState(false);
-  const [isVegetablePage, setIsVegetablePage] = useState(true);
-  const [vegetableToSearch, setVegetableToSearch] = useState("");
+  const [isHomePage, setIsHomePage] = useState(true);
+  const [isVegetablePage, setIsVegetablePage] = useState(false);
+  const [vegetableToSearch, setVegetableToSearch] = useState('');
+  const [apiData, setApiData] = useState([]);
+  const [currentVegetable, setCurrentVegetable] = useState({});
+  useEffect(() => {
+    async function fetchVegetable() {
+      const requestUrl = await fetch(
+        `http://harvesthelper.herokuapp.com/api/v1/plants/?api_key=4de690f753b6820340d5b208a800a214`
+      );
+      const dataResponse = await requestUrl.json();
+      setApiData(dataResponse);
+    }
+    fetchVegetable();
+  }, []);
 
   function handleHomeClick() {
     setIsHomePage(!isHomePage);
@@ -19,15 +31,37 @@ function App() {
     setVegetableToSearch(event.target.value);
   }
 
-  let pageToDisplay;
-  if (isHomePage === true) {
-    pageToDisplay = <HomePage handleSearch={handleSearch} />;
-  }
-  if (isVegetablePage === true) {
-    pageToDisplay = <VegetablePage handleHomeClick={handleHomeClick} />;
+  function handleSearchClick() {
+    const index = apiData.findIndex(
+      (vegetable) => vegetable.name === vegetableToSearch
+    );
+
+    let current = [...apiData.slice(index, index + 1)];
+
+    setCurrentVegetable(current);
+    setIsHomePage(false);
+    setIsVegetablePage(true);
   }
 
-  return <div className="App">{pageToDisplay}</div>;
+  let pageToDisplay;
+  if (isHomePage === true) {
+    pageToDisplay = (
+      <HomePage
+        handleSearch={handleSearch}
+        inputValue={vegetableToSearch}
+        handleSearchClick={handleSearchClick}
+      />
+    );
+  }
+  if (isVegetablePage === true) {
+    pageToDisplay = (
+      <VegetablePage
+        currentVegetable={currentVegetable}
+        handleHomeClick={handleHomeClick}
+      />
+    );
+  }
+  return <div className='App'>{pageToDisplay}</div>;
 }
 
 export default App;
