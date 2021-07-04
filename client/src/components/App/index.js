@@ -6,7 +6,7 @@ import logo from "../../logo.svg";
 import "./App.css";
 
 function App() {
-  const [isHomePage, setIsHomePage] = useState(false);
+  const [isHomePage, setIsHomePage] = useState(true);
   const [isVegetablePage, setIsVegetablePage] = useState(true);
   const [vegetableToSearch, setVegetableToSearch] = useState("");
 
