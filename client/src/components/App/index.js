@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from "react";
-import HomePage from "../HomePage";
-import VegetablePage from "../VegetablePage";
+import React, { useState, useEffect } from 'react';
+import HomePage from '../HomePage';
+import VegetablePage from '../VegetablePage';
 
-import logo from "../../logo.svg";
-import "./App.css";
+import logo from '../../logo.svg';
+import './App.css';
 
 function App() {
   const [isHomePage, setIsHomePage] = useState(false);
   const [isVegetablePage, setIsVegetablePage] = useState(true);
-  const [vegetableToSearch, setVegetableToSearch] = useState("");
+  const [vegetableToSearch, setVegetableToSearch] = useState('');
   const [apiData, setApiData] = useState([]);
-  useEffect(()=> {
-    async function fetchVegetable(){
-      const requestUrl = await fetch (`http://harvesthelper.herokuapp.com/api/v1/plants/?api_key=4de690f753b6820340d5b208a800a214`);
+  useEffect(() => {
+    async function fetchVegetable() {
+      const requestUrl = await fetch(
+        `http://harvesthelper.herokuapp.com/api/v1/plants/?api_key=4de690f753b6820340d5b208a800a214`
+      );
       const dataResponse = await requestUrl.json();
       setApiData(dataResponse);
-      // console.log (dataResponse)
     }
-    fetchVegetable()
-  },[])
+    fetchVegetable();
+  }, []);
 
   function handleHomeClick() {
     setIsHomePage(!isHomePage);
@@ -37,17 +38,7 @@ function App() {
     pageToDisplay = <VegetablePage handleHomeClick={handleHomeClick} />;
   }
 
-
-  
-  return (
-    <div className="App">
-      <h1>Hello</h1>
-      {pageToDisplay}
-      <button type="button" className="btn btn-primary">
-        Primary
-      </button>
-    </div>
-  );
+  return <div className='App'>{pageToDisplay}</div>;
 }
 
 export default App;
