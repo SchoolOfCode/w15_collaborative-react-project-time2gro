@@ -33,7 +33,7 @@ export default function VegetablePage(props) {
         paragraphThree={props.currentVegetable.harvesting}
         detailed={true}
       />
-      <Button handleClick={props.handleHomeClick} />
+      <Button handleClick={props.handleHomeClick} icon='home' />
       <Footer />
     </div>
   );
