@@ -32,7 +32,6 @@ function App() {
   }
 
   function handleSearchClick() {
-    // set current vegetable to be the vegetableToSearch
     const current = apiData.find(
       (vegetable) => vegetable.name === vegetableToSearch
     );
