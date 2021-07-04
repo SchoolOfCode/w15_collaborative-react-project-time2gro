@@ -5,8 +5,7 @@ export default function Button(props) {
     <div>
       <button
         onClick={props.handleClick}
-        className={props.icon}
-        className="btn btn-primary"
+        className={(props.icon, "btn btn-primary")}
       >
         {props.buttonText}
       </button>

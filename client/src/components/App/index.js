@@ -6,7 +6,7 @@ import logo from "../../logo.svg";
 import "./App.css";
 
 function App() {
-  const [isHomePage, setIsHomePage] = useState(true);
+  const [isHomePage, setIsHomePage] = useState(false);
   const [isVegetablePage, setIsVegetablePage] = useState(true);
   const [vegetableToSearch, setVegetableToSearch] = useState("");
 
@@ -27,15 +27,7 @@ function App() {
     pageToDisplay = <VegetablePage handleHomeClick={handleHomeClick} />;
   }
 
-  return (
-    <div className="App">
-      <h1>Hello</h1>
-      {pageToDisplay}
-      <button type="button" className="btn btn-primary">
-        Primary
-      </button>
-    </div>
-  );
+  return <div className="App">{pageToDisplay}</div>;
 }
 
 export default App;

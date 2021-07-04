@@ -9,12 +9,17 @@ import { aboutHeading } from "../../utils/text";
 
 export default function HomePage(props) {
   return (
-    <div>
-      Home
-      <Banner />
-      <NoButtonCard paragraph={aboutParagraph} heading={aboutHeading} />
-      <SearchCard handleSearch={props.handleSearch} />
-      <Footer />
+    <div className="container">
+      <div className="row">
+        <div className="col"></div>
+        <div className="col-lg-10">
+          <Banner />
+          <NoButtonCard paragraph={aboutParagraph} heading={aboutHeading} />
+          <SearchCard handleSearch={props.handleSearch} />
+          <Footer />
+        </div>
+        <div className="col"></div>
+      </div>
     </div>
   );
 }
