@@ -55,6 +55,11 @@ function App() {
     setIsVegetablePage(true);
   }
 
+  function handleQuestionClick() {
+    setIsHomePage(false);
+    setIsQuestionPage(true);
+  }
+
   let pageToDisplay;
   if (isHomePage === true) {
     pageToDisplay = (
@@ -62,6 +67,7 @@ function App() {
         handleSearch={handleSearch}
         inputValue={vegetableToSearch}
         handleSearchClick={handleSearchClick}
+        handleQuestionClick={handleQuestionClick}
       />
     );
   }
