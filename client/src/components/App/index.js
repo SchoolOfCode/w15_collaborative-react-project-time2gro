@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import HomePage from '../HomePage';
 import VegetablePage from '../VegetablePage';
 import QuestionPage from '../QuestionPage';
+import VegetableListPage from '../VegetableListPage';
 
 import logo from '../../logo.svg';
 import {
@@ -15,6 +16,7 @@ function App() {
   const [isHomePage, setIsHomePage] = useState(true);
   const [isVegetablePage, setIsVegetablePage] = useState(false);
   const [isQuestionPage, setIsQuestionPage] = useState(false);
+  const [isVegetableListPage, setIsVegetableListPage] = useState(false);
   const [vegetableToSearch, setVegetableToSearch] = useState('');
   const [apiData, setApiData] = useState([]);
   const [currentVegetable, setCurrentVegetable] = useState({});
@@ -80,8 +82,20 @@ function App() {
     });
     setVegetableList(vegetables);
     setIsQuestionPage(false);
-    setIsVegetablePage(false);
-    setIsHomePage(true);
+    setIsVegetableListPage(true);
+  }
+
+  function handleVegetableClick(e) {
+    console.log(e.target.dataset.button);
+
+    const vegetableIndex = apiData.findIndex(
+      (vegetable) => vegetable.name === e.target.dataset.button
+    );
+
+    let vegetable = [...apiData.slice(vegetableIndex, vegetableIndex + 1)];
+    setCurrentVegetable(vegetable);
+    setIsVegetableListPage(false);
+    setIsVegetablePage(true);
   }
 
   function handleQuestionClick() {
@@ -115,6 +129,15 @@ function App() {
         questionNumber='1'
         handleClick={handleDifficultyClick}
         currentQuestion={currentQuestion}
+      />
+    );
+  }
+  if (isVegetableListPage === true) {
+    pageToDisplay = (
+      <VegetableListPage
+        handleClick={handleVegetableClick}
+        currentQuestion={currentQuestion}
+        vegetableList={vegetableList}
       />
     );
   }
