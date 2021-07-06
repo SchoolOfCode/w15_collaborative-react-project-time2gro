@@ -6,7 +6,7 @@ export const answersArray = ['Easy', 'Medium', 'Hard'];
 
 export const difficultyLevel = "Chose your difficulty level:";
 
-const answerDifficultyLevel = [
+export const answerDifficultyLevel = [
     {
     name : "Lettuce",
     difficulty : "Easy",
@@ -43,4 +43,4 @@ const answerDifficultyLevel = [
     name : "Onion",
     difficulty : "Hard",
 }
-]
+];

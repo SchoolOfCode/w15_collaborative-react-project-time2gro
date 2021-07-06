@@ -4,9 +4,9 @@ import VegetablePage from '../VegetablePage';
 import QuestionPage from '../QuestionPage';
 
 import logo from '../../logo.svg';
-import { answersArray } from '../../utils/text';
+import { answersArray, difficultyLevel, answerDifficultyLevel } from '../../utils/text';
 import './App.css';
-import { difficultyLevel } from '../../utils/text';
+
 
 function App() {
   const [isHomePage, setIsHomePage] = useState(true);
@@ -18,6 +18,8 @@ function App() {
   const [answers, setAnswers] = useState(answersArray);
   const [userDifficulty, setUserDifficulty] = useState('');
   const [currentQuestion, setCurrentQuestion] = useState (difficultyLevel);
+  const [selectDifficulty, setSelectDifficulty] = useState (answerDifficultyLevel);
+  const [vegetableList, setVegetableList] = useState([]);
 
   useEffect(() => {
     async function fetchVegetable() {
@@ -53,11 +55,31 @@ function App() {
     setIsVegetablePage(true);
   }
 
-  function handleAnswerClick(e) {
+  
+  function handleDifficultyClick(e) {
     console.log(e.target.dataset.button);
     setUserDifficulty(e.target.dataset.button);
+    //we need to loop throw difficulty array
+       
+      let vegetableDifficultySelection = answerDifficultyLevel.filter((results)=>{
+       return results.difficulty === userDifficulty;
+      });
+      console.log(vegetableDifficultySelection)
+      let current = [];
+    vegetableDifficultySelection.forEach(element => {
+       
+      let itemMatched = apiData.findIndex((item)=>{
+        return element.name === item.name;
+      })
+      let newCurrent = [...apiData.slice(itemMatched, itemMatched + 1,)]
+      current.push(newCurrent);
+      console.log(current)
+    });
+    setVegetableList(current)
+    //set them in state
     setIsQuestionPage(false);
-    setIsVegetablePage(true);
+    setIsVegetablePage(false);
+    setIsHomePage(true);
   }
 
   function handleQuestionClick() {
@@ -89,7 +111,7 @@ function App() {
       <QuestionPage
         answers={answers}
         questionNumber='1'
-        handleClick={handleAnswerClick}
+        handleClick={handleDifficultyClick}
         currentQuestion ={currentQuestion}
       />
     );
