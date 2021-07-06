@@ -15,35 +15,39 @@ export default function VegetablePage(props) {
     watering,
     feeding,
     harvesting,
+    image_url,
   } = props.currentVegetable[0];
   return (
     <div>
-      
-          <Banner />
-          <NoButtonCard heading={name} paragraph={description} />
-          <NoButtonCard
-            heading='Sun, Space & Time'
-            subheadingOne='Optimal Sun'
-            paragraphOne={optimal_sun}
-            subheadingTwo='Space'
-            paragraphTwo={spacing}
-            subheadingThree='When'
-            paragraphThree={when_to_plant}
-            detailed={true}
-          />
-          <NoButtonCard
-            heading='Nurturing'
-            subheadingOne='Watering'
-            paragraphOne={watering}
-            subheadingTwo='Feeding'
-            paragraphTwo={feeding}
-            subheadingThree='Harvesting'
-            paragraphThree={harvesting}
-            detailed={true}
-          />
-          <Button handleClick={props.handleHomeClick} icon='home' />
-          <Footer />
-        
+      <Banner />
+      <NoButtonCard
+        isImg={true}
+        type='about'
+        heading={name}
+        paragraph={description}
+      />
+      <NoButtonCard
+        heading='Sun, Space & Time'
+        subheadingOne='Optimal Sun'
+        paragraphOne={optimal_sun}
+        subheadingTwo='Space'
+        paragraphTwo={spacing}
+        subheadingThree='When'
+        paragraphThree={when_to_plant}
+        detailed={true}
+      />
+      <NoButtonCard
+        heading='Nurturing'
+        subheadingOne='Watering'
+        paragraphOne={watering}
+        subheadingTwo='Feeding'
+        paragraphTwo={feeding}
+        subheadingThree='Harvesting'
+        paragraphThree={harvesting}
+        detailed={true}
+      />
+      <Button handleClick={props.handleHomeClick} icon='home' />
+      <Footer />
     </div>
   );
 }

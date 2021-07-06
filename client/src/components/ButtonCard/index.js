@@ -1,5 +1,6 @@
 import React from 'react';
 import aboutImg from '../../img/about-banner.png';
+import Button from '../Button';
 
 export default function ButtonCard(props) {
   return (
@@ -13,9 +14,11 @@ export default function ButtonCard(props) {
       ></img>
       <div className='card-body'>
         <h5 className='card-title'>{props.heading}</h5>
-        <button data-button={props.buttonId} onClick={props.handleClick}>
-          Select
-        </button>
+        <Button
+          buttonText='Select'
+          data={props.buttonId}
+          handleClick={props.handleClick}
+        />
       </div>
     </div>
   );
