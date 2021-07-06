@@ -1,10 +1,13 @@
 import React from 'react';
 import ButtonCard from '../ButtonCard';
+import Banner from '../Banner';
+
 
 export default function QuestionPage(props) {
   return (
     <div>
-      <h1>Question {props.questionNumber}</h1>
+      <Banner/>
+      <h1>{props.currentQuestion}</h1>
       <p>{props.question}</p>
       {props.answers.map((answer) => (
         <ButtonCard

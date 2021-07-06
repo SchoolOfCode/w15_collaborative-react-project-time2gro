@@ -6,6 +6,7 @@ import QuestionPage from '../QuestionPage';
 import logo from '../../logo.svg';
 import { answersArray } from '../../utils/text';
 import './App.css';
+import { difficultyLevel } from '../../utils/text';
 
 function App() {
   const [isHomePage, setIsHomePage] = useState(true);
@@ -15,7 +16,9 @@ function App() {
   const [apiData, setApiData] = useState([]);
   const [currentVegetable, setCurrentVegetable] = useState({});
   const [answers, setAnswers] = useState(answersArray);
-  const [userSpace, setUserSpace] = useState('');
+  const [userDifficulty, setuserDifficulty] = useState('');
+  const [currentQuestion, setCurrentQuestion] = useState (difficultyLevel);
+
   useEffect(() => {
     async function fetchVegetable() {
       const requestUrl = await fetch(
@@ -26,6 +29,8 @@ function App() {
     }
     fetchVegetable();
   }, []);
+
+
 
   function handleHomeClick() {
     setIsHomePage(!isHomePage);
@@ -50,7 +55,7 @@ function App() {
 
   function handleAnswerClick(e) {
     console.log(e.target.dataset.button);
-    setUserSpace(e.target.dataset.button);
+    setuserDifficulty(e.target.dataset.button);
     setIsQuestionPage(false);
     setIsVegetablePage(true);
   }
@@ -85,8 +90,10 @@ function App() {
         answers={answers}
         questionNumber='1'
         handleClick={handleAnswerClick}
+        currentQuestion ={currentQuestion}
       />
     );
+    
   }
   return <div className='App'>{pageToDisplay}</div>;
 }
