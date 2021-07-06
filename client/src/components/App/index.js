@@ -16,7 +16,7 @@ function App() {
   const [apiData, setApiData] = useState([]);
   const [currentVegetable, setCurrentVegetable] = useState({});
   const [answers, setAnswers] = useState(answersArray);
-  const [userDifficulty, setuserDifficulty] = useState('');
+  const [userDifficulty, setUserDifficulty] = useState('');
   const [currentQuestion, setCurrentQuestion] = useState (difficultyLevel);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ function App() {
 
   function handleAnswerClick(e) {
     console.log(e.target.dataset.button);
-    setuserDifficulty(e.target.dataset.button);
+    setUserDifficulty(e.target.dataset.button);
     setIsQuestionPage(false);
     setIsVegetablePage(true);
   }
@@ -95,7 +95,16 @@ function App() {
     );
     
   }
-  return <div className='App'>{pageToDisplay}</div>;
+  return (<div className='App'>
+  <div className='container'>
+      <div className='row'>
+        <div className='col'></div>
+          <div className='col-lg-10'>{pageToDisplay}</div>
+          <div className='col'></div>
+        </div>
+      </div>
+    </div> )
+  
 }
 
 export default App;
