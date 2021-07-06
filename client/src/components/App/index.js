@@ -150,9 +150,9 @@ function App() {
     <div className='App'>
       <div className='container'>
         <div className='row'>
-          <div className='col'></div>
-          <div className='col-lg-10'>{pageToDisplay}</div>
-          <div className='col'></div>
+          <div className='col-lg-2'></div>
+          <div className='col-lg-8'>{pageToDisplay}</div>
+          <div className='col-lg-2'></div>
         </div>
       </div>
     </div>
