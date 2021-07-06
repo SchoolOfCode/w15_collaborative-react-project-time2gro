@@ -9,6 +9,8 @@ import {
   answersArray,
   difficultyLevel,
   answerDifficultyLevel,
+  listHeading,
+  listSubheading,
 } from '../../utils/text';
 import './App.css';
 
@@ -135,6 +137,9 @@ function App() {
   if (isVegetableListPage === true) {
     pageToDisplay = (
       <VegetableListPage
+        vegetableListHeading={listHeading}
+        vegetableListSubheading={listSubheading}
+        difficulty={userDifficulty}
         handleClick={handleVegetableClick}
         currentQuestion={currentQuestion}
         vegetableList={vegetableList}

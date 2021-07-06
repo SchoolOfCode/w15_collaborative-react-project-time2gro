@@ -23,16 +23,33 @@ export default function NoButtonCard(props) {
       </div>
     );
   }
-
-  return (
-    <div className='card border-secondary mb-3'>
+  let imgSrc;
+  switch (props.type) {
+    case 'about':
+      imgSrc = aboutImg;
+      break;
+    case 'dynamic':
+      imgSrc = props.img;
+      break;
+    default:
+      break;
+  }
+  let img;
+  if (props.isImg) {
+    img = (
       <img
         className='card-img-top'
         style={{ objectFit: 'cover', objectPosition: '40% 5%' }}
-        src={aboutImg}
+        src={imgSrc}
         alt='vegetables'
         height='200px'
       ></img>
+    );
+  }
+
+  return (
+    <div className='card border-secondary mb-3'>
+      {img}
       <div className='card-body'>{text}</div>
     </div>
   );

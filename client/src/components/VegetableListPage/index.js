@@ -9,8 +9,9 @@ export default function VegetableListPage(props) {
   return (
     <div>
       <Banner />
-      {/* <h1>{props.currentQuestion}</h1>
-      <p>{props.question}</p> */}
+      <h1>{props.vegetableListHeading}</h1>
+      <p>Difficulty: {`${props.difficulty}`}</p>
+      <p>{props.vegetableListSubheading}</p>
       {props.vegetableList.map((vegetable) => (
         <ButtonCard
           key={vegetable[0].name}
