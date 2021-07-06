@@ -4,9 +4,12 @@ import VegetablePage from '../VegetablePage';
 import QuestionPage from '../QuestionPage';
 
 import logo from '../../logo.svg';
-import { answersArray, difficultyLevel, answerDifficultyLevel } from '../../utils/text';
+import {
+  answersArray,
+  difficultyLevel,
+  answerDifficultyLevel,
+} from '../../utils/text';
 import './App.css';
-
 
 function App() {
   const [isHomePage, setIsHomePage] = useState(true);
@@ -17,8 +20,10 @@ function App() {
   const [currentVegetable, setCurrentVegetable] = useState({});
   const [answers, setAnswers] = useState(answersArray);
   const [userDifficulty, setUserDifficulty] = useState('');
-  const [currentQuestion, setCurrentQuestion] = useState (difficultyLevel);
-  const [selectDifficulty, setSelectDifficulty] = useState (answerDifficultyLevel);
+  const [currentQuestion, setCurrentQuestion] = useState(difficultyLevel);
+  const [selectDifficulty, setSelectDifficulty] = useState(
+    answerDifficultyLevel
+  );
   const [vegetableList, setVegetableList] = useState([]);
 
   useEffect(() => {
@@ -31,8 +36,6 @@ function App() {
     }
     fetchVegetable();
   }, []);
-
-
 
   function handleHomeClick() {
     setIsHomePage(!isHomePage);
@@ -55,28 +58,27 @@ function App() {
     setIsVegetablePage(true);
   }
 
-  
   function handleDifficultyClick(e) {
-    console.log(e.target.dataset.button);
     setUserDifficulty(e.target.dataset.button);
-    //we need to loop throw difficulty array
-       
-      let vegetableDifficultySelection = answerDifficultyLevel.filter((results)=>{
-       return results.difficulty === userDifficulty;
-      });
-      console.log(vegetableDifficultySelection)
-      let current = [];
-    vegetableDifficultySelection.forEach(element => {
-       
-      let itemMatched = apiData.findIndex((item)=>{
+    let currentDifficulty = e.target.dataset.button;
+
+    let vegetableDifficultySelection = answerDifficultyLevel.filter(
+      (vegetable) => {
+        return vegetable.difficulty === currentDifficulty;
+      }
+    );
+
+    let vegetables = [];
+    vegetableDifficultySelection.forEach((element) => {
+      let correctDifficultyIndex = apiData.findIndex((item) => {
         return element.name === item.name;
-      })
-      let newCurrent = [...apiData.slice(itemMatched, itemMatched + 1,)]
-      current.push(newCurrent);
-      console.log(current)
+      });
+      let difficultyMatchedVegetables = [
+        ...apiData.slice(correctDifficultyIndex, correctDifficultyIndex + 1),
+      ];
+      vegetables.push(difficultyMatchedVegetables);
     });
-    setVegetableList(current)
-    //set them in state
+    setVegetableList(vegetables);
     setIsQuestionPage(false);
     setIsVegetablePage(false);
     setIsHomePage(true);
@@ -112,21 +114,21 @@ function App() {
         answers={answers}
         questionNumber='1'
         handleClick={handleDifficultyClick}
-        currentQuestion ={currentQuestion}
+        currentQuestion={currentQuestion}
       />
     );
-    
   }
-  return (<div className='App'>
-  <div className='container'>
-      <div className='row'>
-        <div className='col'></div>
+  return (
+    <div className='App'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col'></div>
           <div className='col-lg-10'>{pageToDisplay}</div>
           <div className='col'></div>
         </div>
       </div>
-    </div> )
-  
+    </div>
+  );
 }
 
 export default App;
