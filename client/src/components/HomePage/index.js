@@ -10,11 +10,8 @@ import { aboutHeading } from '../../utils/text';
 
 export default function HomePage(props) {
   return (
-    <div className='container'>
-      <div className='row'>
-        <div className='col'></div>
-        <div className='col-lg-10'>
-          <Banner />
+    <div>
+        <Banner />
           <NoButtonCard paragraph={aboutParagraph} heading={aboutHeading} />
           <SearchCard
             handleSearch={props.handleSearch}
@@ -26,9 +23,7 @@ export default function HomePage(props) {
             handleClick={props.handleQuestionClick}
           />
           <Footer />
-        </div>
-        <div className='col'></div>
-      </div>
+        
     </div>
   );
 }
