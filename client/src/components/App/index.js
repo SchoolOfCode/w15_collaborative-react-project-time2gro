@@ -36,18 +36,29 @@ function App() {
         `http://harvesthelper.herokuapp.com/api/v1/plants/?api_key=4de690f753b6820340d5b208a800a214`
       );
       const dataResponse = await requestUrl.json();
+      console.log(dataResponse);
       setApiData(dataResponse);
     }
+
     fetchVegetable();
   }, []);
+
+  const options = [
+    ...apiData.map((d) => ({
+      value: d.name,
+      label: d.name,
+    })),
+  ];
+
+  console.log(options);
 
   function handleHomeClick() {
     setIsHomePage(!isHomePage);
     setIsVegetablePage(!isVegetablePage);
   }
 
-  function handleSearch(event) {
-    setVegetableToSearch(event.target.value);
+  function handleChange(vegetable) {
+    setVegetableToSearch(vegetable.value);
   }
 
   function handleSearchClick() {
@@ -109,8 +120,9 @@ function App() {
   if (isHomePage === true) {
     pageToDisplay = (
       <HomePage
-        handleSearch={handleSearch}
-        inputValue={vegetableToSearch}
+        options={options}
+        data={setApiData}
+        handleChange={handleChange}
         handleSearchClick={handleSearchClick}
         handleQuestionClick={handleQuestionClick}
       />

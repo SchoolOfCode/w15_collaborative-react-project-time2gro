@@ -19,8 +19,8 @@ export default function HomePage(props) {
         heading={aboutHeading}
       />
       <SearchCard
-        handleSearch={props.handleSearch}
-        inputValue={props.inputValue}
+        options={props.options}
+        handleChange={props.handleChange}
         handleSearchClick={props.handleSearchClick}
       />
       <ButtonCard
