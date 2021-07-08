@@ -1,35 +1,34 @@
-import React, { useState, useEffect } from "react";
-import HomePage from "../HomePage";
-import VegetablePage from "../VegetablePage";
-import QuestionPage from "../QuestionPage";
-import VegetableListPage from "../VegetableListPage";
+import React, { useState, useEffect } from 'react';
+import HomePage from '../HomePage';
+import VegetablePage from '../VegetablePage';
+import QuestionPage from '../QuestionPage';
+import VegetableListPage from '../VegetableListPage';
 
-import logo from "../../logo.svg";
+import logo from '../../logo.svg';
 import {
   answersArray,
   difficultyLevel,
   answerDifficultyLevel,
   listHeading,
   listSubheading,
-} from "../../utils/text";
-import "./App.css";
+} from '../../utils/text';
+import './App.css';
 
 function App() {
   const [isHomePage, setIsHomePage] = useState(true);
   const [isVegetablePage, setIsVegetablePage] = useState(false);
   const [isQuestionPage, setIsQuestionPage] = useState(false);
   const [isVegetableListPage, setIsVegetableListPage] = useState(false);
-  const [vegetableToSearch, setVegetableToSearch] = useState("");
+  const [vegetableToSearch, setVegetableToSearch] = useState('');
   const [apiData, setApiData] = useState([]);
   const [currentVegetable, setCurrentVegetable] = useState({});
   const [answers, setAnswers] = useState(answersArray);
-  const [userDifficulty, setUserDifficulty] = useState("");
+  const [userDifficulty, setUserDifficulty] = useState('');
   const [currentQuestion, setCurrentQuestion] = useState(difficultyLevel);
   const [selectDifficulty, setSelectDifficulty] = useState(
     answerDifficultyLevel
   );
   const [vegetableList, setVegetableList] = useState([]);
-  const [options, setOptions] = useState([]);
 
   useEffect(() => {
     async function fetchVegetable() {
@@ -38,18 +37,17 @@ function App() {
       );
       const dataResponse = await requestUrl.json();
       setApiData(dataResponse);
-
-      const options = [
-        ...dataResponse.map((d) => ({
-          value: d.name,
-          label: d.name,
-        })),
-      ];
-      setOptions({ selectOptions: options });
     }
 
     fetchVegetable();
   }, []);
+
+  const options = [
+    ...apiData.map((d) => ({
+      value: d.name,
+      label: d.name,
+    })),
+  ];
 
   console.log(options);
 
@@ -58,17 +56,14 @@ function App() {
     setIsVegetablePage(!isVegetablePage);
   }
 
-  function handleChange(event) {
-    console.log(event.label);
-    setVegetableToSearch(event.label);
-    handleSearchClick();
+  function handleChange(vegetable) {
+    setVegetableToSearch(vegetable.value);
   }
 
   function handleSearchClick() {
     const index = apiData.findIndex(
       (vegetable) => vegetable.name === vegetableToSearch
     );
-    console.log(index);
 
     let current = [...apiData.slice(index, index + 1)];
 
@@ -124,6 +119,7 @@ function App() {
   if (isHomePage === true) {
     pageToDisplay = (
       <HomePage
+        options={options}
         data={setApiData}
         handleChange={handleChange}
         inputValue={vegetableToSearch}
@@ -144,7 +140,7 @@ function App() {
     pageToDisplay = (
       <QuestionPage
         answers={answers}
-        questionNumber="1"
+        questionNumber='1'
         handleClick={handleDifficultyClick}
         currentQuestion={currentQuestion}
       />
@@ -163,12 +159,12 @@ function App() {
     );
   }
   return (
-    <div className="App">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-2"></div>
-          <div className="col-lg-8">{pageToDisplay}</div>
-          <div className="col-lg-2"></div>
+    <div className='App'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-lg-2'></div>
+          <div className='col-lg-8'>{pageToDisplay}</div>
+          <div className='col-lg-2'></div>
         </div>
       </div>
     </div>
