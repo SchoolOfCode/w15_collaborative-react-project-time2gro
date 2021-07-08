@@ -36,6 +36,7 @@ function App() {
         `http://harvesthelper.herokuapp.com/api/v1/plants/?api_key=4de690f753b6820340d5b208a800a214`
       );
       const dataResponse = await requestUrl.json();
+      console.log(dataResponse);
       setApiData(dataResponse);
     }
 
@@ -122,7 +123,6 @@ function App() {
         options={options}
         data={setApiData}
         handleChange={handleChange}
-        inputValue={vegetableToSearch}
         handleSearchClick={handleSearchClick}
         handleQuestionClick={handleQuestionClick}
       />
