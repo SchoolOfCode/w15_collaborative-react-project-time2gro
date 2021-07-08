@@ -29,7 +29,6 @@ function App() {
     answerDifficultyLevel
   );
   const [vegetableList, setVegetableList] = useState([]);
-  const [options, setOptions] = useState([]);
 
   useEffect(() => {
     async function fetchVegetable() {
@@ -37,45 +36,35 @@ function App() {
         `http://harvesthelper.herokuapp.com/api/v1/plants/?api_key=4de690f753b6820340d5b208a800a214`
       );
       const dataResponse = await requestUrl.json();
+      console.log(dataResponse);
       setApiData(dataResponse);
-
-      const options = [
-        ...dataResponse.map((d) => ({
-          value: d.name,
-          label: d.name,
-        })),
-      ];
-      setOptions({ selectOptions: options });
     }
 
     fetchVegetable();
   }, []);
-
-  console.log(options);
 
   function handleHomeClick() {
     setIsHomePage(!isHomePage);
     setIsVegetablePage(!isVegetablePage);
   }
 
-  function handleChange(event) {
-    console.log(event.label);
-    setVegetableToSearch(event.label);
-    handleSearchClick();
-  }
+  let handleChange = (e) => {
+    setVegetableToSearch(e.target.value);
+    console.log(e.target.value);
+    // handleSearchClick();
+    // };
 
-  function handleSearchClick() {
+    // function handleSearchClick() {
     const index = apiData.findIndex(
       (vegetable) => vegetable.name === vegetableToSearch
     );
-    console.log(index);
 
     let current = [...apiData.slice(index, index + 1)];
 
     setCurrentVegetable(current);
     setIsHomePage(false);
     setIsVegetablePage(true);
-  }
+  };
 
   function handleDifficultyClick(e) {
     setUserDifficulty(e.target.dataset.button);
@@ -126,8 +115,8 @@ function App() {
       <HomePage
         data={setApiData}
         handleChange={handleChange}
-        inputValue={vegetableToSearch}
-        handleSearchClick={handleSearchClick}
+        // inputValue={vegetableToSearch}
+        // handleSearchClick={handleSearchClick}
         handleQuestionClick={handleQuestionClick}
       />
     );
