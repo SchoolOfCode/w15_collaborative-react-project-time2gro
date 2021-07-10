@@ -1,7 +1,6 @@
-export const aboutParagraphOne = `On average, our food travels 600 to 800 km before arriving on our plates. So it’s not surprising that consumers are increasingly concerned about its origin.
-While growing your own food ensures you have regular stocks available and provides fresh ingredients for your meals, it has other benefits that you may not have expected.`;
+export const aboutParagraphOne = `The modern world sees our food travelling thousands of miles yo reach your plate and it can be difficult to know what pesticides, fertilisers and chemicals it has been treated with. We want to enable people to grow their own vegetables and know exactly where it's come from and what has happened to it.`;
 
-export const aboutParagraphTwo = `Make your health a priority.`;
+export const aboutParagraphTwo = `Grow the food you want to eat.`;
 
 export const aboutHeading = 'About Time2Gro';
 
@@ -13,6 +12,9 @@ export const listHeading = 'Select a Suitable Vegetable';
 
 export const listSubheading =
   'Your options based on this level are displayed below';
+
+export const footerText =
+  'Created by Claudiu Manta, Natalie Pinnock and Ryan Brown';
 
 export const answerDifficultyLevel = [
   {
