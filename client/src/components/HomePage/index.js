@@ -5,7 +5,8 @@ import Footer from '../Footer';
 import NoButtonCard from '../NoButtonCard';
 import SearchCard from '../SearchCard';
 import ButtonCard from '../ButtonCard';
-import { aboutParagraph } from '../../utils/text';
+import { aboutParagraphOne } from '../../utils/text';
+import { aboutParagraphTwo } from '../../utils/text';
 import { aboutHeading } from '../../utils/text';
 
 export default function HomePage(props) {
@@ -15,7 +16,8 @@ export default function HomePage(props) {
       <NoButtonCard
         isImg={true}
         type='about'
-        paragraph={aboutParagraph}
+        paragraphOne={aboutParagraphOne}
+        paragraphTwo={aboutParagraphTwo}
         heading={aboutHeading}
       />
       <SearchCard
