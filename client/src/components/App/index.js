@@ -16,7 +16,7 @@ import './App.css';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
-  const [vegetableToSearch, setVegetableToSearch] = useState('');
+  const [vegetableToSearch, setVegetableToSearch] = useState('Tomatoes');
   const [apiData, setApiData] = useState([]);
   const [currentVegetable, setCurrentVegetable] = useState({});
   const [answers, setAnswers] = useState(answersArray);
