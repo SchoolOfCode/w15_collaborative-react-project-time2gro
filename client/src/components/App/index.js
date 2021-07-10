@@ -1,29 +1,26 @@
-import React, { useState, useEffect } from "react";
-import HomePage from "../HomePage";
-import VegetablePage from "../VegetablePage";
-import QuestionPage from "../QuestionPage";
-import VegetableListPage from "../VegetableListPage";
+import React, { useState, useEffect } from 'react';
+import HomePage from '../HomePage';
+import VegetablePage from '../VegetablePage';
+import QuestionPage from '../QuestionPage';
+import VegetableListPage from '../VegetableListPage';
 
-import logo from "../../logo.svg";
+import logo from '../../logo.svg';
 import {
   answersArray,
   difficultyLevel,
   answerDifficultyLevel,
   listHeading,
   listSubheading,
-} from "../../utils/text";
-import "./App.css";
+} from '../../utils/text';
+import './App.css';
 
 function App() {
-  const [isHomePage, setIsHomePage] = useState(true);
-  const [isVegetablePage, setIsVegetablePage] = useState(false);
-  const [isQuestionPage, setIsQuestionPage] = useState(false);
-  const [isVegetableListPage, setIsVegetableListPage] = useState(false);
-  const [vegetableToSearch, setVegetableToSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState('home');
+  const [vegetableToSearch, setVegetableToSearch] = useState('');
   const [apiData, setApiData] = useState([]);
   const [currentVegetable, setCurrentVegetable] = useState({});
   const [answers, setAnswers] = useState(answersArray);
-  const [userDifficulty, setUserDifficulty] = useState("");
+  const [userDifficulty, setUserDifficulty] = useState('');
   const [currentQuestion, setCurrentQuestion] = useState(difficultyLevel);
   const [selectDifficulty, setSelectDifficulty] = useState(
     answerDifficultyLevel
@@ -53,8 +50,7 @@ function App() {
   console.log(options);
 
   function handleHomeClick() {
-    setIsHomePage(!isHomePage);
-    setIsVegetablePage(!isVegetablePage);
+    setCurrentPage('home');
   }
 
   function handleChange(vegetable) {
@@ -69,8 +65,7 @@ function App() {
     let current = [...apiData.slice(index, index + 1)];
 
     setCurrentVegetable(current);
-    setIsHomePage(false);
-    setIsVegetablePage(true);
+    setCurrentPage('vegetable');
   }
 
   function handleDifficultyClick(e) {
@@ -94,8 +89,7 @@ function App() {
       vegetables.push(difficultyMatchedVegetables);
     });
     setVegetableList(vegetables);
-    setIsQuestionPage(false);
-    setIsVegetableListPage(true);
+    setCurrentPage('vegetable list');
   }
 
   function handleVegetableClick(e) {
@@ -107,17 +101,15 @@ function App() {
 
     let vegetable = [...apiData.slice(vegetableIndex, vegetableIndex + 1)];
     setCurrentVegetable(vegetable);
-    setIsVegetableListPage(false);
-    setIsVegetablePage(true);
+    setCurrentPage('vegetable');
   }
 
   function handleQuestionClick() {
-    setIsHomePage(false);
-    setIsQuestionPage(true);
+    setCurrentPage('question');
   }
 
   let pageToDisplay;
-  if (isHomePage === true) {
+  if (currentPage === 'home') {
     pageToDisplay = (
       <HomePage
         options={options}
@@ -128,7 +120,7 @@ function App() {
       />
     );
   }
-  if (isVegetablePage === true) {
+  if (currentPage === 'vegetable') {
     pageToDisplay = (
       <VegetablePage
         currentVegetable={currentVegetable}
@@ -136,17 +128,17 @@ function App() {
       />
     );
   }
-  if (isQuestionPage === true) {
+  if (currentPage === 'question') {
     pageToDisplay = (
       <QuestionPage
         answers={answers}
-        questionNumber="1"
+        questionNumber='1'
         handleClick={handleDifficultyClick}
         currentQuestion={currentQuestion}
       />
     );
   }
-  if (isVegetableListPage === true) {
+  if (currentPage === 'vegetable list') {
     pageToDisplay = (
       <VegetableListPage
         vegetableListHeading={listHeading}
@@ -159,12 +151,12 @@ function App() {
     );
   }
   return (
-    <div className="App">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-3"></div>
-          <div className="col-lg-6">{pageToDisplay}</div>
-          <div className="col-lg-3"></div>
+    <div className='App'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-lg-3'></div>
+          <div className='col-lg-6'>{pageToDisplay}</div>
+          <div className='col-lg-3'></div>
         </div>
       </div>
     </div>
