@@ -1,6 +1,6 @@
 # Time2Gro Presentation: 
 
-(https://vimeo.com/573357764/2196e92c27)
+https://vimeo.com/573357764/2196e92c27
 
 # Getting Started with Create React App
 
