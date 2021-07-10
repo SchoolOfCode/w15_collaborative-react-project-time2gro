@@ -5,10 +5,16 @@ import React from 'react';
 export default function Button(props) {
   let button;
   if (props.icon) {
+    const iconStyle = {
+      fontSize: '2rem',
+      color: '#74a322',
+    };
     button = (
-      <i onClick={props.handleClick} className={`${props.icon} fas fa-home`}>
-        {props.buttonText}
-      </i>
+      <i
+        onClick={props.handleClick}
+        className={`${props.icon} bi bi-house-fill`}
+        style={iconStyle}
+      ></i>
     );
   } else {
     button = (
