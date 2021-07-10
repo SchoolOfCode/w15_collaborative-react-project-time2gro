@@ -1,12 +1,12 @@
-import React from 'react';
-import ButtonCard from '../ButtonCard';
-import Banner from '../Banner';
-
+import React from "react";
+import ButtonCard from "../ButtonCard";
+import Banner from "../Banner";
+import Footer from "../Footer";
 
 export default function QuestionPage(props) {
   return (
     <div>
-      <Banner/>
+      <Banner />
       <h1>{props.currentQuestion}</h1>
       <p>{props.question}</p>
       {props.answers.map((answer) => (
@@ -17,6 +17,7 @@ export default function QuestionPage(props) {
           buttonId={answer}
         />
       ))}
+      <Footer />
     </div>
   );
 }
