@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import HomePage from '../HomePage';
-import VegetablePage from '../VegetablePage';
-import QuestionPage from '../QuestionPage';
-import VegetableListPage from '../VegetableListPage';
+import React, { useState, useEffect } from "react";
+import HomePage from "../HomePage";
+import VegetablePage from "../VegetablePage";
+import QuestionPage from "../QuestionPage";
+import VegetableListPage from "../VegetableListPage";
 
-import logo from '../../logo.svg';
+import logo from "../../logo.svg";
 import {
   answersArray,
   difficultyLevel,
   answerDifficultyLevel,
   listHeading,
   listSubheading,
-} from '../../utils/text';
-import './App.css';
+} from "../../utils/text";
+import "./App.css";
 
 function App() {
   const [isHomePage, setIsHomePage] = useState(true);
   const [isVegetablePage, setIsVegetablePage] = useState(false);
   const [isQuestionPage, setIsQuestionPage] = useState(false);
   const [isVegetableListPage, setIsVegetableListPage] = useState(false);
-  const [vegetableToSearch, setVegetableToSearch] = useState('');
+  const [vegetableToSearch, setVegetableToSearch] = useState("");
   const [apiData, setApiData] = useState([]);
   const [currentVegetable, setCurrentVegetable] = useState({});
   const [answers, setAnswers] = useState(answersArray);
-  const [userDifficulty, setUserDifficulty] = useState('');
+  const [userDifficulty, setUserDifficulty] = useState("");
   const [currentQuestion, setCurrentQuestion] = useState(difficultyLevel);
   const [selectDifficulty, setSelectDifficulty] = useState(
     answerDifficultyLevel
@@ -140,7 +140,7 @@ function App() {
     pageToDisplay = (
       <QuestionPage
         answers={answers}
-        questionNumber='1'
+        questionNumber="1"
         handleClick={handleDifficultyClick}
         currentQuestion={currentQuestion}
       />
@@ -159,12 +159,12 @@ function App() {
     );
   }
   return (
-    <div className='App'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-lg-2'></div>
-          <div className='col-lg-8'>{pageToDisplay}</div>
-          <div className='col-lg-2'></div>
+    <div className="App">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-3"></div>
+          <div className="col-lg-6">{pageToDisplay}</div>
+          <div className="col-lg-3"></div>
         </div>
       </div>
     </div>

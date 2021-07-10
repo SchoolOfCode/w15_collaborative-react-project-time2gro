@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+.btn {
+  background-color: #f6914d;
+  color: white;
+}
+
+.card-img-top {
+  object-fit: cover;
+  object-position: 40% 5%;
+}
+
+.dropdown {
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-family: "Assistant", sans-serif;
+  font-weight: bold;
+  color: #74a322;
+}
+
+h5 {
+  font-family: "Assistant", sans-serif;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #74a322;
+}
+
+.card-body {
+  font-family: "Benne", serif;
+  font-size: 1.1em;
+  color: #2e2c2f;
+}

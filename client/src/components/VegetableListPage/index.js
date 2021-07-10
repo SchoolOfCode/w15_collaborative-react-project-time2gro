@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import Banner from '../Banner';
-import Footer from '../Footer';
-
-import ButtonCard from '../ButtonCard';
+import Banner from "../Banner";
+import Footer from "../Footer";
+import ButtonCard from "../ButtonCard";
 
 export default function VegetableListPage(props) {
   return (
