@@ -19,6 +19,7 @@ export default function Button(props) {
   } else {
     button = (
       <button
+
         data-button={props.data}
         onClick={props.handleClick}
         className='btn'
