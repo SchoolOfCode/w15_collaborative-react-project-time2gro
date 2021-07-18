@@ -69,3 +69,18 @@ h5 {
   font-size: 1.1em;
   color: #2e2c2f;
 }
+
+.card-subtitle {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  text-align: left;
+}
+ 
+.card-text {
+  text-align: left;
+}
+
+h5 {
+  color: #72A022;
+}

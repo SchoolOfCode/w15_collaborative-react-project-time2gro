@@ -1,6 +1,6 @@
-export const aboutParagraphOne = `The modern world sees our food travelling thousands of miles yo reach your plate and it can be difficult to know what pesticides, fertilisers and chemicals it has been treated with. We want to enable people to grow their own vegetables and know exactly where it's come from and what has happened to it.`;
+export const aboutParagraphOne = `The modern world sees our food travelling thousands of miles to reach your plate and it can be difficult to know what pesticides, fertilisers, and chemicals it has been treated with. We want to enable people to grow their own vegetables and know exactly where it's come from and what has happened to them.`;
 
-export const aboutParagraphTwo = `Grow the food you want to eat.`;
+export const aboutParagraphTwo = `Learn how to grow the food you want to eat.`;
 
 export const aboutHeading = 'About Time2Gro';
 
