@@ -10,7 +10,7 @@ import {
   difficultyLevel,
   answerDifficultyLevel,
   listHeading,
-  listSubheading,
+  listSubheading
 } from '../../utils/text';
 import './App.css';
 

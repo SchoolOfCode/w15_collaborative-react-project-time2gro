@@ -3,8 +3,9 @@ import aboutImg from "../../img/about-banner.png";
 import Button from "../Button";
 
 export default function ButtonCard(props) {
+  console.log(props)
   return (
-    <div className="card shadow mb-3">
+    <div className="card shadow mb-3"> 
       <img
         className="card-img-top"
         src={aboutImg}
@@ -13,6 +14,7 @@ export default function ButtonCard(props) {
       ></img>
       <div className="card-body">
         <h5 className="card-title">{props.heading}</h5>
+        <p className="card-explanation">{props.explanation}</p>
         <Button
           buttonText="Select"
           data={props.buttonId}

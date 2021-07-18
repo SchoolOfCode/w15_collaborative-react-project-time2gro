@@ -8,7 +8,20 @@ export const difficultyHeading = 'Choose a Vegetable to grow by the level of dif
 
 export const aboutHeading = 'About Time2Gro';
 
-export const answersArray = ['Easy', 'Medium', 'Hard'];
+export const answersArray = [{
+  heading: 'Easy',
+  explanation: 'These vegetables are suitable for someone who is new to growing vegetables'
+}, 
+{
+  heading: 'Medium',
+  explanation: 'These vegetables are suitable for someone who has experience or would like a challenge'
+}, 
+{
+  heading: 'Hard',
+  explanation: 'These vegetables require alot of commitment to get right'
+}
+] 
+
 
 export const difficultyLevel = 'Choose your difficulty level';
 

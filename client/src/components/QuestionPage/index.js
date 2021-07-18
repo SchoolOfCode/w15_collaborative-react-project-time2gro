@@ -3,6 +3,8 @@ import ButtonCard from "../ButtonCard";
 import Banner from "../Banner";
 import Footer from "../Footer";
 
+
+
 export default function QuestionPage(props) {
   return (
     <div>
@@ -11,10 +13,11 @@ export default function QuestionPage(props) {
       <p>{props.question}</p>
       {props.answers.map((answer) => (
         <ButtonCard
-          key={answer}
+          key={answer.heading}
           handleClick={props.handleClick}
-          heading={answer}
-          buttonId={answer}
+          heading={answer.heading}
+          explanation={answer.explanation}
+          buttonId={answer.heading}
         />
       ))}
       <Footer />
