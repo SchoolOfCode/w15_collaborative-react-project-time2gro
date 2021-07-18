@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import Button from "../Button";
+import {
+  searchHeading,
+} from '../../utils/text';
 
 export default function SearchCard(props) {
   return (
     <div className="card shadow  mb-3">
       <div className="card-body">
-        <h5 className="card-title">Search for a Vegetable!</h5>
+        <h5 className="card-title">{searchHeading}</h5>
         <Select
           className="dropdown"
           options={props.options}

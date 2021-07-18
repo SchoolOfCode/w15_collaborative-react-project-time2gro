@@ -2,6 +2,8 @@ export const aboutParagraphOne = `The modern world sees our food travelling thou
 
 export const aboutParagraphTwo = `Learn how to grow the food you want to eat.`;
 
+export const searchHeading ='Search for a Vegetable to grow!'
+
 export const aboutHeading = 'About Time2Gro';
 
 export const answersArray = ['Easy', 'Medium', 'Hard'];
