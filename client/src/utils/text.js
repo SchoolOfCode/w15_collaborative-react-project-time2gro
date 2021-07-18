@@ -4,6 +4,8 @@ export const aboutParagraphTwo = `Learn how to grow the food you want to eat.`;
 
 export const searchHeading ='Search for a Vegetable to grow!'
 
+export const difficultyHeading = 'Choose a Vegetable to grow by the level of difficulty!'
+
 export const aboutHeading = 'About Time2Gro';
 
 export const answersArray = ['Easy', 'Medium', 'Hard'];

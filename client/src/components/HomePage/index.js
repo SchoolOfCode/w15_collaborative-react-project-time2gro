@@ -8,6 +8,9 @@ import ButtonCard from '../ButtonCard';
 import { aboutParagraphOne } from '../../utils/text';
 import { aboutParagraphTwo } from '../../utils/text';
 import { aboutHeading } from '../../utils/text';
+import { difficultyHeading } from '../../utils/text';
+
+
 
 export default function HomePage(props) {
   return (
@@ -26,7 +29,7 @@ export default function HomePage(props) {
         handleSearchClick={props.handleSearchClick}
       />
       <ButtonCard
-        heading='Let Us Decide'
+        heading={difficultyHeading}
         handleClick={props.handleQuestionClick}
       />
       <Footer />
