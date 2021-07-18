@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import HomePage from '../HomePage';
 import VegetablePage from '../VegetablePage';
 import QuestionPage from '../QuestionPage';
@@ -15,7 +15,46 @@ import {
 import './App.css';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+
+  let actions={
+    
+  }
+
+  let inistialState = {
+    currentPage:"home",
+    vegetableToSearch:'Tomatoes',
+    currentVegetable:{},
+    answers:answersArray,
+    userDifficulty:"",
+    currentQuestion:difficultyLevel,
+    selectDifficulty:answerDifficultyLevel
+  }
+  let [state,dispatch]= useReducer(reducer,inistialState)
+  console.log(inistialState.currentPage)
+
+
+  function reducer(state,action){
+    switch (action.type) {
+      case "vegetable":
+        
+          return {...state,currentPage:'vegetable'}
+      case 'home':
+        return {...state,currentPage:'home'}
+      case 'vegetable list':
+        return {...state,currentPage:'vegetable list'}
+      case 'question':
+        return {...state,currentPage:'question'}
+      default:
+        break;
+    }
+  }
+
+
+
+console.log(state)
+
+
+
   const [vegetableToSearch, setVegetableToSearch] = useState('Tomatoes');
   const [apiData, setApiData] = useState([]);
   const [currentVegetable, setCurrentVegetable] = useState({});
@@ -50,7 +89,8 @@ function App() {
   console.log(options);
 
   function handleHomeClick() {
-    setCurrentPage('home');
+    
+    dispatch({type:'home'})
   }
 
   function handleChange(vegetable) {
@@ -65,7 +105,8 @@ function App() {
     let current = [...apiData.slice(index, index + 1)];
 
     setCurrentVegetable(current);
-    setCurrentPage('vegetable');
+    dispatch({type:'vegetable'})
+    
   }
 
   function handleDifficultyClick(e) {
@@ -89,7 +130,8 @@ function App() {
       vegetables.push(difficultyMatchedVegetables);
     });
     setVegetableList(vegetables);
-    setCurrentPage('vegetable list');
+    
+    dispatch({type:"vegetable list"})
   }
 
   function handleVegetableClick(e) {
@@ -101,15 +143,17 @@ function App() {
 
     let vegetable = [...apiData.slice(vegetableIndex, vegetableIndex + 1)];
     setCurrentVegetable(vegetable);
-    setCurrentPage('vegetable');
+    
+    dispatch({type:"vegetable"})
   }
 
   function handleQuestionClick() {
-    setCurrentPage('question');
+    
+    dispatch({type:"question"})
   }
 
   let pageToDisplay;
-  if (currentPage === 'home') {
+  if (state.currentPage === 'home') {
     pageToDisplay = (
       <HomePage
         options={options}
@@ -120,7 +164,9 @@ function App() {
       />
     );
   }
-  if (currentPage === 'vegetable') {
+
+  if (state.currentPage === 'vegetable') {
+    console.log("why")
     pageToDisplay = (
       <VegetablePage
         currentVegetable={currentVegetable}
@@ -128,7 +174,7 @@ function App() {
       />
     );
   }
-  if (currentPage === 'question') {
+  if (state.currentPage === 'question') {
     pageToDisplay = (
       <QuestionPage
         answers={answers}
@@ -138,7 +184,7 @@ function App() {
       />
     );
   }
-  if (currentPage === 'vegetable list') {
+  if (state.currentPage === 'vegetable list') {
     pageToDisplay = (
       <VegetableListPage
         vegetableListHeading={listHeading}
