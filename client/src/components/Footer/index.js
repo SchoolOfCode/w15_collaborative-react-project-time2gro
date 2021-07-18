@@ -4,8 +4,8 @@ import './footer.css';
 
 export default function Footer() {
   return (
-    <footer>
-      <p className='text-muted spacing'>{footerText}</p>
+    <footer data-testid="Footer" >
+      <p data-testid="footerText" className='text-muted spacing'>{footerText}</p>
     </footer>
   );
 }
