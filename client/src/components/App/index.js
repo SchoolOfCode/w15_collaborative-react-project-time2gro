@@ -17,12 +17,19 @@ import './App.css';
 
 function App() {
 
-  let actions={
-    
-  }
 
+// ACTIONS-
+  let SET_PAGE_VEG ="vegetable"
+  let SET_PAGE_HOME ="home"
+  let SET_PAGE_VEG_LIST ="vegetable list"
+  let SET_PAGE_QUESTION ='question'
+  let CURRENT_VEG ="currentVeg"
+  let API_DATA ="apiData"
+  let USER_DIFFICULTY ="UserDifficulty"
+  
+// INSTIAL STATE
   let inistialState = {
-    currentPage:"home",
+    currentPage:SET_PAGE_HOME,
     vegetableToSearch:'Tomatoes',
     currentVegetable:{},
     answers:answersArray,
@@ -38,39 +45,39 @@ function App() {
 
   function reducer(state,action){
     switch (action.type) {
-      case "vegetable":
+      case SET_PAGE_VEG:
           return {
             ...state,
             currentPage:'vegetable',
           }
 
-      case 'home':
+      case SET_PAGE_HOME:
         return {
           ...state,
           currentPage:'home',
         }
 
-      case 'vegetable list':
+      case SET_PAGE_VEG_LIST:
         return {...state,
           currentPage:'vegetable list',
         }
 
-      case 'question':
+      case SET_PAGE_QUESTION:
         return {...state,
           currentPage:'question',
         }
 
-      case "currentVeg":
+      case CURRENT_VEG:
         return {...state,
           currentVegetable:action.payload,
         }
 
-      case "apiData":
+      case API_DATA:
         return {...state,
           apiData:action.payload
         }
       
-      case "UserDifficulty":
+      case USER_DIFFICULTY:
         return{...state,
           
         }
@@ -87,7 +94,7 @@ function App() {
         `http://harvesthelper.herokuapp.com/api/v1/plants/?api_key=4de690f753b6820340d5b208a800a214`
       );
       const dataResponse = await requestUrl.json();
-      dispatch({type:"apiData",payload:dataResponse})
+      dispatch({type:API_DATA,payload:dataResponse})
       
     }
 
@@ -109,7 +116,7 @@ function App() {
 
 
   function handleHomeClick() {
-    dispatch({type:'home'})
+    dispatch({type:SET_PAGE_HOME})
   }
 
   function handleChange(vegetable) {
@@ -120,18 +127,15 @@ function App() {
     const index = state.apiData.findIndex(
       (vegetable) => vegetable.name === vegetableToSearch
     );
-
-    let current = [...state.apiData.slice(index, index + 1)];
-      console.log(current)
-    
-    dispatch({type:"currentVeg",payload:current})
-    dispatch({type:'vegetable'})
+    let current = [...state.apiData.slice(index, index + 1)];    
+    dispatch({type:CURRENT_VEG,payload:current})
+    dispatch({type:SET_PAGE_VEG})
     
   }
 
   function handleDifficultyClick(e) {
 
-    dispatch({type:"UserDifficulty",payload:e.target.dataset.button})
+    dispatch({type:USER_DIFFICULTY,payload:e.target.dataset.button})
     let currentDifficulty = e.target.dataset.button;
 
     let vegetableDifficultySelection = answerDifficultyLevel.filter(
@@ -152,7 +156,7 @@ function App() {
     });
     setVegetableList(vegetables);
     
-    dispatch({type:"vegetable list"})
+    dispatch({type:SET_PAGE_VEG_LIST})
   }
 
   function handleVegetableClick(e) {
@@ -165,16 +169,16 @@ function App() {
     let vegetable = [...state.apiData.slice(vegetableIndex, vegetableIndex + 1)];
     
     
-    dispatch({type:"vegetable", payload:{vegetable}})
+    dispatch({type:SET_PAGE_VEG, payload:{vegetable}})
   }
 
   function handleQuestionClick() {
     
-    dispatch({type:"question"})
+    dispatch({type:SET_PAGE_QUESTION})
   }
 
   let pageToDisplay;
-  if (state.currentPage === 'home') {
+  if (state.currentPage === SET_PAGE_HOME) {
     pageToDisplay = (
       <HomePage
         options={options}
@@ -186,7 +190,7 @@ function App() {
     );
   }
 
-  if (state.currentPage === 'vegetable') {
+  if (state.currentPage === SET_PAGE_VEG) {
     pageToDisplay = (
       <VegetablePage
         currentVegetable={state.currentVegetable}
@@ -194,7 +198,7 @@ function App() {
       />
     );
   }
-  if (state.currentPage === 'question') {
+  if (state.currentPage === SET_PAGE_QUESTION) {
     pageToDisplay = (
       <QuestionPage
         answers={answers}
@@ -204,7 +208,7 @@ function App() {
       />
     );
   }
-  if (state.currentPage === 'vegetable list') {
+  if (state.currentPage === SET_PAGE_VEG_LIST) {
     pageToDisplay = (
       <VegetableListPage
         vegetableListHeading={listHeading}
