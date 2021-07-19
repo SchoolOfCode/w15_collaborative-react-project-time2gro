@@ -10,7 +10,7 @@ import aboutImg from "../../img/about-banner.png";
 import Button from "../Button";
 
 export default function ButtonCard(props) {
-  console.log(props)
+
   return (
     <div className="card shadow mb-3"> 
       <img

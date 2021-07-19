@@ -4,10 +4,9 @@ import VegetablePage from "../VegetablePage";
 import QuestionPage from "../QuestionPage";
 import VegetableListPage from "../VegetableListPage";
 
-import logo from "../../logo.svg";
+
 import {
   answersArray,
-  difficultyLevel,
   answerDifficultyLevel,
   listHeading,
   listSubheading,
@@ -78,7 +77,6 @@ function App() {
         `http://harvesthelper.herokuapp.com/api/v1/plants/?api_key=4de690f753b6820340d5b208a800a214`
       );
       const dataResponse = await requestUrl.json();
-      console.log(dataResponse);
       dispatch({ type: SET_API_DATA, value: dataResponse });
     }
 
@@ -91,8 +89,6 @@ function App() {
       label: d.name,
     })),
   ];
-
-  console.log(options);
 
   function setCurrentPage(page) {
     dispatch({ type: SET_CURRENT_PAGE, value: page });
@@ -142,8 +138,7 @@ function App() {
   }
 
   function handleVegetableClick(e) {
-    console.log(e.target.dataset.button);
-
+  
     const vegetableIndex = apiData.findIndex(
       (vegetable) => vegetable.name === e.target.dataset.button
     );

@@ -17,7 +17,6 @@ export default function VegetablePage(props) {
     watering,
     feeding,
     harvesting,
-    image_url,
   } = props.currentVegetable[0];
   return (
     <div>

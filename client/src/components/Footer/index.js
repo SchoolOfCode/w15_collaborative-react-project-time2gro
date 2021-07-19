@@ -2,7 +2,6 @@
 // This is used on every page to inform user who made the website
 
 import React from "react";
-import { footerText } from "../../utils/text";
 import "./footer.css";
 
 export default function Footer() {
@@ -21,7 +20,7 @@ export default function Footer() {
         {" "}
         Ryan Brown{" "}
       </a>
-      ;
+      
     </footer>
   );
 }
