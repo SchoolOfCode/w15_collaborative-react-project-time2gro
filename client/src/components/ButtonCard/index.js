@@ -1,3 +1,10 @@
+// Card with a button advancing to next page
+// This is used on:  
+// On Home Page for difficulty selection
+// Difficulty Selection 
+// Vegetable Selection 
+
+
 import React from "react";
 import aboutImg from "../../img/about-banner.png";
 import Button from "../Button";

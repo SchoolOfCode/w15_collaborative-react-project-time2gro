@@ -1,3 +1,7 @@
+// Card that just needs to have information on it. 
+// Used in Home Page explanation text
+// Vegetable Instructions 
+
 import React from 'react';
 import aboutImg from '../../img/about-banner.png';
 

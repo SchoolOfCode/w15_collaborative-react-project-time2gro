@@ -1,3 +1,6 @@
+// Vegetable selection page 
+// After the user selects difficulty level, this page will give an option of vegetables to grow based on that level of difficulty
+
 import React from "react";
 
 import Banner from "../Banner";
@@ -9,7 +12,7 @@ export default function VegetableListPage(props) {
     <div>
       <Banner />
       <h1>{props.vegetableListHeading}</h1>
-      <p>Difficulty: {`${props.difficulty}`}</p>
+      <h2>Difficulty: {`${props.difficulty}`}</h2>
       <p>{props.vegetableListSubheading}</p>
       {props.vegetableList.map((vegetable) => (
         <ButtonCard

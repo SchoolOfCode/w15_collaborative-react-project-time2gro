@@ -1,3 +1,5 @@
+// This is the carrot logo at the top of each page 
+
 import React from "react";
 import logo from "../../img/logo.png";
 

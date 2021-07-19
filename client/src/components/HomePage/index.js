@@ -1,5 +1,9 @@
-import React from 'react';
+// Home Page
+// Inclues: Explanation about website, 
+// Drop down box to select vegetable by name or 
+// Button to select vegetable by difficulty level
 
+import React from 'react';
 import Banner from '../Banner';
 import Footer from '../Footer';
 import NoButtonCard from '../NoButtonCard';

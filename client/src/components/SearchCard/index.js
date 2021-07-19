@@ -1,3 +1,6 @@
+// Card that has dropdown box with choices of vegetables on
+// Found on homepage
+
 import React, { useState } from "react";
 import Select from "react-select";
 import Button from "../Button";
