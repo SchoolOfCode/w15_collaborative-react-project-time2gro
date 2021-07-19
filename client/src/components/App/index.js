@@ -23,6 +23,7 @@ const initialState = {
   currentPage: "home",
   vegetableToSearch: "Tomatoes",
   apiData: [],
+  
 };
 
 // 2. replace any setState with case and dispatch
@@ -49,19 +50,21 @@ const reducer = (state, action) => {
 };
 
 function App() {
-  // Replace these above
+ 
+  // Removed State as they do not change
+  const answers = answersArray;
+  const currentQuestion = "";
+
+   // Replace these above
   // Parameter 1 goes into inital State, 2 goes into reducer
   const [currentVegetable, setCurrentVegetable] = useState({});
-  const [answers, setAnswers] = useState(answersArray);
   const [userDifficulty, setUserDifficulty] = useState("");
-  const [currentQuestion, setCurrentQuestion] = useState(difficultyLevel);
-  const [selectDifficulty, setSelectDifficulty] = useState(
-    answerDifficultyLevel
-  );
   const [vegetableList, setVegetableList] = useState([]);
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // const [selectDifficulty, setSelectDifficulty] = useState(
+  //   answerDifficultyLevel);
 
+  const [state, dispatch] = useReducer(reducer, initialState);
   const { currentPage, vegetableToSearch, apiData } = state;
 
   useEffect(() => {
