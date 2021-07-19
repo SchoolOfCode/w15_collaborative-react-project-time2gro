@@ -17,13 +17,14 @@ import "./App.css";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_VEGETABLE_TO_SEARCH = "SET_VEGETABLE_TO_SEARCH";
 const SET_API_DATA = "SET_API_DATA";
+const SET_VEGETABLE_LIST = "SET_VEGETABLE_LIST";
 
 // 1. replace any user State calls with a property in here
 const initialState = {
   currentPage: "home",
   vegetableToSearch: "Tomatoes",
   apiData: [],
-  
+  vegetableList: [],
 };
 
 // 2. replace any setState with case and dispatch
@@ -44,6 +45,11 @@ const reducer = (state, action) => {
         ...state,
         apiData: action.value,
       };
+      case SET_VEGETABLE_LIST:
+        return {
+          ...state,
+          vegetableList: action.value,
+        };
     default:
       return state;
   }
@@ -59,13 +65,12 @@ function App() {
   // Parameter 1 goes into inital State, 2 goes into reducer
   const [currentVegetable, setCurrentVegetable] = useState({});
   const [userDifficulty, setUserDifficulty] = useState("");
-  const [vegetableList, setVegetableList] = useState([]);
 
   // const [selectDifficulty, setSelectDifficulty] = useState(
   //   answerDifficultyLevel);
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { currentPage, vegetableToSearch, apiData } = state;
+  const { currentPage, vegetableToSearch, apiData, vegetableList } = state;
 
   useEffect(() => {
     async function fetchVegetable() {
@@ -132,7 +137,7 @@ function App() {
       ];
       vegetables.push(difficultyMatchedVegetables);
     });
-    setVegetableList(vegetables);
+    dispatch({ type: SET_VEGETABLE_LIST, value: vegetables });
     setCurrentPage("vegetable list");
   }
 
