@@ -33,6 +33,8 @@ export const listSubheading =
 export const footerText =
   'Created by Claudiu Manta, Natalie Pinnock and Ryan Brown';
 
+  
+
 export const answerDifficultyLevel = [
   {
     name: 'Lettuce',

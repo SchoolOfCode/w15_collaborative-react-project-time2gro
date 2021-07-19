@@ -6,19 +6,19 @@ export default function NoButtonCard(props) {
   if (props.detailed) {
     text = (
       <div className='card-body'>
-        <h5 className='card-title'>{props.heading}</h5>
-        <h6 className='card-subtitle text-muted'>{props.subheadingOne}</h6>
+        <h2 className='card-title'>{props.heading}</h2>
+        <h3 className='card-subtitle text-muted'>{props.subheadingOne}</h3>
         <p className='card-text'>{props.paragraphOne}</p>
-        <h6 className='card-subtitle text-muted'>{props.subheadingTwo}</h6>
+        <h3 className='card-subtitle text-muted'>{props.subheadingTwo}</h3>
         <p className='card-text'>{props.paragraphTwo}</p>
-        <h6 className='card-subtitle text-muted'>{props.subheadingThree}</h6>
+        <h3 className='card-subtitle text-muted'>{props.subheadingThree}</h3>
         <p className='card-text'>{props.paragraphThree}</p>
       </div>
     );
   } else {
     text = (
       <div className='card-body'>
-        <h5 className='card-title'>{props.heading}</h5>
+        <h2 className='card-title'>{props.heading}</h2>
         <p className='card-text'>{props.paragraphOne}</p>
         <p className='card-text'>
           <strong>{props.paragraphTwo}</strong>

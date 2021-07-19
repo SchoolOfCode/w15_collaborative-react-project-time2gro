@@ -1,3 +1,12 @@
 .spacing {
   padding-top: 1rem;
 }
+
+.git-link{
+  color: #F36C12;  
+  text-decoration: underline;
+}
+
+.git-link:hover {
+  color: #74a322;
+}

@@ -13,7 +13,7 @@ export default function ButtonCard(props) {
         height="200px"
       ></img>
       <div className="card-body">
-        <h5 className="card-title">{props.heading}</h5>
+        <h2 className="card-title">{props.heading}</h2>
         <p className="card-explanation">{props.explanation}</p>
         <Button
           buttonText="Select"
