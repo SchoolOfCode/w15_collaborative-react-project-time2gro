@@ -12,7 +12,7 @@ export default function SearchCard(props) {
   return (
     <div className="card shadow  mb-3">
       <div className="card-body">
-        <h5 className="card-title">{searchHeading}</h5>
+        <h2 className="card-title">{searchHeading}</h2>
         <Select
           className="dropdown"
           options={props.options}
