@@ -4,9 +4,8 @@ import VegetablePage from '../VegetablePage';
 import QuestionPage from '../QuestionPage';
 import VegetableListPage from '../VegetableListPage';
 
-import logo from '../../logo.svg';
 import {
-  pageToDisplay,
+  // pageToDisplay,<<<not in use
   answersArray,
   difficultyLevel,
   answerDifficultyLevel,
@@ -17,7 +16,7 @@ import './App.css';
 
 function App() {
 
-
+  let pageToDisplay;
 // ACTIONS-
   let SET_PAGE_VEG ="vegetable"
   let SET_PAGE_HOME ="home"
@@ -29,6 +28,7 @@ function App() {
   
 // INSTIAL STATE
   let inistialState = {
+    pageToDisplay,
     currentPage:SET_PAGE_HOME,
     vegetableToSearch:'Tomatoes',
     currentVegetable:{},
@@ -43,6 +43,14 @@ function App() {
   console.log(inistialState.currentPage)
 
 
+  const options = [
+    ...state.apiData.map((d) => ({
+      value: d.name,
+      label: d.name,
+    })),
+  ];
+    
+
   function reducer(state,action){
     switch (action.type) {
       case SET_PAGE_VEG:
@@ -55,6 +63,7 @@ function App() {
         return {
           ...state,
           currentPage:'home',
+          // pageToDisplay:
         }
 
       case SET_PAGE_VEG_LIST:
@@ -101,13 +110,7 @@ function App() {
     fetchVegetable();
   }, []);
 
-  const options = [
-    ...state.apiData.map((d) => ({
-      value: d.name,
-      label: d.name,
-    })),
-  ];
-
+ 
 
   const [vegetableToSearch, setVegetableToSearch] = useState('Tomatoes');
   const [answers, setAnswers] = useState(answersArray);
@@ -177,17 +180,17 @@ function App() {
     dispatch({type:SET_PAGE_QUESTION})
   }
 
-  let pageToDisplay;
+ 
   if (state.currentPage === SET_PAGE_HOME) {
     pageToDisplay = (
       <HomePage
         options={options}
-        // data={setApiData}
+        // data={setApiData}<<this is not in use
         handleChange={handleChange}
         handleSearchClick={handleSearchClick}
         handleQuestionClick={handleQuestionClick}
       />
-    );
+    )
   }
 
   if (state.currentPage === SET_PAGE_VEG) {
