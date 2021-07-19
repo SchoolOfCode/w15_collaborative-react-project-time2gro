@@ -6,6 +6,7 @@ import VegetableListPage from '../VegetableListPage';
 
 import logo from '../../logo.svg';
 import {
+  pageToDisplay,
   answersArray,
   difficultyLevel,
   answerDifficultyLevel,
@@ -27,7 +28,9 @@ function App() {
     answers:answersArray,
     userDifficulty:"",
     currentQuestion:difficultyLevel,
-    selectDifficulty:answerDifficultyLevel
+    selectDifficulty:answerDifficultyLevel,
+    apiData:[]
+
   }
   let [state,dispatch]= useReducer(reducer,inistialState)
   console.log(inistialState.currentPage)
@@ -36,35 +39,47 @@ function App() {
   function reducer(state,action){
     switch (action.type) {
       case "vegetable":
-        
-          return {...state,currentPage:'vegetable'}
+          return {
+            ...state,
+            currentPage:'vegetable',
+          }
+
       case 'home':
-        return {...state,currentPage:'home'}
+        return {
+          ...state,
+          currentPage:'home',
+        }
+
       case 'vegetable list':
-        return {...state,currentPage:'vegetable list'}
+        return {...state,
+          currentPage:'vegetable list',
+        }
+
       case 'question':
-        return {...state,currentPage:'question'}
+        return {...state,
+          currentPage:'question',
+        }
+
+      case "currentVeg":
+        return {...state,
+          currentVegetable:action.payload,
+        }
+
+      case "apiData":
+        return {...state,
+          apiData:action.payload
+        }
+      
+      case "UserDifficulty":
+        return{...state,
+          
+        }
+
       default:
         break;
     }
   }
 
-
-
-console.log(state)
-
-
-
-  const [vegetableToSearch, setVegetableToSearch] = useState('Tomatoes');
-  const [apiData, setApiData] = useState([]);
-  const [currentVegetable, setCurrentVegetable] = useState({});
-  const [answers, setAnswers] = useState(answersArray);
-  const [userDifficulty, setUserDifficulty] = useState('');
-  const [currentQuestion, setCurrentQuestion] = useState(difficultyLevel);
-  const [selectDifficulty, setSelectDifficulty] = useState(
-    answerDifficultyLevel
-  );
-  const [vegetableList, setVegetableList] = useState([]);
 
   useEffect(() => {
     async function fetchVegetable() {
@@ -72,24 +87,28 @@ console.log(state)
         `http://harvesthelper.herokuapp.com/api/v1/plants/?api_key=4de690f753b6820340d5b208a800a214`
       );
       const dataResponse = await requestUrl.json();
-      console.log(dataResponse);
-      setApiData(dataResponse);
+      dispatch({type:"apiData",payload:dataResponse})
+      
     }
 
     fetchVegetable();
   }, []);
 
   const options = [
-    ...apiData.map((d) => ({
+    ...state.apiData.map((d) => ({
       value: d.name,
       label: d.name,
     })),
   ];
 
-  console.log(options);
+
+  const [vegetableToSearch, setVegetableToSearch] = useState('Tomatoes');
+  const [answers, setAnswers] = useState(answersArray);
+  const [currentQuestion, setCurrentQuestion] = useState(difficultyLevel);
+  const [vegetableList, setVegetableList] = useState([]);
+
 
   function handleHomeClick() {
-    
     dispatch({type:'home'})
   }
 
@@ -98,19 +117,21 @@ console.log(state)
   }
 
   function handleSearchClick() {
-    const index = apiData.findIndex(
+    const index = state.apiData.findIndex(
       (vegetable) => vegetable.name === vegetableToSearch
     );
 
-    let current = [...apiData.slice(index, index + 1)];
-
-    setCurrentVegetable(current);
+    let current = [...state.apiData.slice(index, index + 1)];
+      console.log(current)
+    
+    dispatch({type:"currentVeg",payload:current})
     dispatch({type:'vegetable'})
     
   }
 
   function handleDifficultyClick(e) {
-    setUserDifficulty(e.target.dataset.button);
+
+    dispatch({type:"UserDifficulty",payload:e.target.dataset.button})
     let currentDifficulty = e.target.dataset.button;
 
     let vegetableDifficultySelection = answerDifficultyLevel.filter(
@@ -121,11 +142,11 @@ console.log(state)
 
     let vegetables = [];
     vegetableDifficultySelection.forEach((element) => {
-      let correctDifficultyIndex = apiData.findIndex((item) => {
+      let correctDifficultyIndex = state.apiData.findIndex((item) => {
         return element.name === item.name;
       });
       let difficultyMatchedVegetables = [
-        ...apiData.slice(correctDifficultyIndex, correctDifficultyIndex + 1),
+        ...state.apiData.slice(correctDifficultyIndex, correctDifficultyIndex + 1),
       ];
       vegetables.push(difficultyMatchedVegetables);
     });
@@ -137,14 +158,14 @@ console.log(state)
   function handleVegetableClick(e) {
     console.log(e.target.dataset.button);
 
-    const vegetableIndex = apiData.findIndex(
+    const vegetableIndex = state.apiData.findIndex(
       (vegetable) => vegetable.name === e.target.dataset.button
     );
 
-    let vegetable = [...apiData.slice(vegetableIndex, vegetableIndex + 1)];
-    setCurrentVegetable(vegetable);
+    let vegetable = [...state.apiData.slice(vegetableIndex, vegetableIndex + 1)];
     
-    dispatch({type:"vegetable"})
+    
+    dispatch({type:"vegetable", payload:{vegetable}})
   }
 
   function handleQuestionClick() {
@@ -157,7 +178,7 @@ console.log(state)
     pageToDisplay = (
       <HomePage
         options={options}
-        data={setApiData}
+        // data={setApiData}
         handleChange={handleChange}
         handleSearchClick={handleSearchClick}
         handleQuestionClick={handleQuestionClick}
@@ -166,10 +187,9 @@ console.log(state)
   }
 
   if (state.currentPage === 'vegetable') {
-    console.log("why")
     pageToDisplay = (
       <VegetablePage
-        currentVegetable={currentVegetable}
+        currentVegetable={state.currentVegetable}
         handleHomeClick={handleHomeClick}
       />
     );
@@ -189,7 +209,7 @@ console.log(state)
       <VegetableListPage
         vegetableListHeading={listHeading}
         vegetableListSubheading={listSubheading}
-        difficulty={userDifficulty}
+        difficulty={state.userDifficulty}
         handleClick={handleVegetableClick}
         currentQuestion={currentQuestion}
         vegetableList={vegetableList}
