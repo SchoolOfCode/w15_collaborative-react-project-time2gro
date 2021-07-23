@@ -5,7 +5,7 @@ import Footer from "../Footer";
 
 export default function QuestionPage(props) {
   return (
-    <div>
+    <div data-testid= "question-page">
       <Banner />
       <h1>{props.currentQuestion}</h1>
       <p>{props.question}</p>

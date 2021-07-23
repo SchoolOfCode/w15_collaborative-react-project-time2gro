@@ -4,7 +4,7 @@ import './footer.css';
 
 export default function Footer() {
   return (
-    <footer>
+    <footer data-testid="footer-container">
       <p className='text-muted spacing'>{footerText}</p>
     </footer>
   );

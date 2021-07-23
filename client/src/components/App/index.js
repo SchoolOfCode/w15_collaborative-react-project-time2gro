@@ -4,7 +4,7 @@ import VegetablePage from '../VegetablePage';
 import QuestionPage from '../QuestionPage';
 import VegetableListPage from '../VegetableListPage';
 
-import logo from '../../logo.svg';
+// logo was not in use so removed
 import {
   answersArray,
   difficultyLevel,
@@ -22,6 +22,7 @@ function App() {
   const [answers, setAnswers] = useState(answersArray);
   const [userDifficulty, setUserDifficulty] = useState('');
   const [currentQuestion, setCurrentQuestion] = useState(difficultyLevel);
+  // 'setSelectDifficulty' is assigned a value but never used
   const [selectDifficulty, setSelectDifficulty] = useState(
     answerDifficultyLevel
   );

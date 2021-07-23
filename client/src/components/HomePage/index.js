@@ -11,7 +11,7 @@ import { aboutHeading } from '../../utils/text';
 
 export default function HomePage(props) {
   return (
-    <div>
+    <div data-testid="homepage-div">
       <Banner />
       <NoButtonCard
         isImg={true}
