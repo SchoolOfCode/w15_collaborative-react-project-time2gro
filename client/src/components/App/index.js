@@ -71,6 +71,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { currentPage, vegetableToSearch, apiData, vegetableList } = state;
 
+  // This function fetches the information about growing instructions from the API 
   useEffect(() => {
     async function fetchVegetable() {
       const requestUrl = await fetch(
@@ -90,13 +91,16 @@ function App() {
     })),
   ];
 
+  //Function changes the page user is on
   function setCurrentPage(page) {
     dispatch({ type: SET_CURRENT_PAGE, value: page });
   }
 
+ // Function changes the page user is on to home
   function handleHomeClick() {
     setCurrentPage("home");
   }
+
 
   function handleChange(vegetable) {
     dispatch({ type: SET_VEGETABLE_TO_SEARCH, value: vegetable.value });

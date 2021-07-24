@@ -1,74 +1,162 @@
-# Time2Gro Presentation: 
+![Logo](https://i.imgur.com/nBNPz8O.png)
 
-https://vimeo.com/573357764/2196e92c27
 
-# Getting Started with Create React App
+# About Time2Gro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Time2Gro was created by Claudiu Manta, Natalie Pinnock and Ryan Brown to make growing vegetables easier for people. 
 
-## Available Scripts
+The website allows the user to either pick a vegetable from a long list of options or lets the user pick a vegetable to grow based on their experience level. 
 
-In the project directory, you can run:
+The growing instructions are fetched from the Harvest Helper API so the user gets detailed instructions of how to grow their ideal vegetable. 
 
-### `npm start`
+The website is built in React. 
+ 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Time2Gro Presentation: 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+https://vimeo.com/573357764/2196e92c27 
+ 
 
-### `npm test`
+## Running the Project 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+From the repo: 
+* clone this project locally 
+* cd into the project directory 
+* run `npm install`
+* run `npm start`
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Components
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The main information for this APP can be found in the src folder. The below components can be found in the components folder
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## App
 
-### `npm run eject`
+This is the main component of the App. It has all the functions needed to: 
+- Set Current Page
+- Get the information from the API for the growing instructions
+- Select growing difficulty level 
+- Select type of vegetable 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Pages
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### HomePage
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Home Page
 
-## Learn More
+This page includes: 
+- Explanation about website, 
+- Drop down box to select vegetable by name which takes you to the VegetablePage with the Growing Instructions on. 
+- Button to select vegetable by difficulty level. The Select  button takes you to the QuestionPage to select your difficulty choice. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+(See Screenshot below)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### QuestionPage
 
-### Code Splitting
+Difficulty level Selection Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+User can select a vegetable to grow depending on its level of difficulty from Easy, Medium or Hard
 
-### Analyzing the Bundle Size
+### VegetableListPage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Vegetable Choice Page
 
-### Making a Progressive Web App
+After the user selects difficulty level, this page will give an option of vegetables to grow based on that level of difficulty
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### VegetablePage
 
-### Advanced Configuration
+Growing Instructions Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This is the page that has the growing instructions for the vegetable that the user has chosen. 
 
-### Deployment
+It also allows the user to return to the home page. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+(See Screenshot below)
 
-### `npm run build` fails to minify
+## Reusuable Components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Banner
+
+Logo 
+
+This is the component that includes the picture of the logo which is used at the top of pages. 
+
+![Logo](https://i.imgur.com/nBNPz8O.png)
+
+### SearchCard
+
+Drop-down box 
+
+This card can be found on the homepage, it  has a drop-down box with choices of vegetables on. 
+
+### NoButtonCard
+
+Text information in a card
+
+This component is used when text needs to be shown to the user.
+
+### ButtonCard
+
+Button in a card 
+
+This component is used when the user needs to click a button to advance to the next page. 
+
+### Button
+
+Buttons 
+
+Home Button and Next page buttons can be found here
+
+### Footer
+
+Footer 
+
+This is used on every page to inform user who made the website.
+
+# Other Folders
+
+## Img Folder
+Images for the website are found her such as the logo and the "banner" which is the picture of vegetables that appears throughout the website. 
+
+![Banner](https://i.imgur.com/qJetOVl.png
+)
+
+## Utils Folder
+### Text.JS
+
+All the Text for the website can be found here, which makes for easy editing. 
+
+# CSS
+
+The majority of CSS can be found in the App folded named App.CSS. 
+
+There is also CSS in the footer component for the footer and index.css file for the font information.  
+
+## Screenshots
+
+### Home Page
+![Home Page](https://i.imgur.com/ipYixU6.png)
+
+### Growing Instructions
+![Growing Instructions](https://i.imgur.com/sCkpeo9.png)
+
+### API Information
+![API Information](https://i.imgur.com/1AUQcZa.png)
+
+# Dependencies
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+
+API Information is fetched from [Harvest Helper](https://github.com/damwhit/harvest_helper)
+
+
+## 🔗 Git Hub Links
+* [Claudiu Manta](https://github.com/Claudyu04)
+* [Natalie Pinnock](https://github.com/natpinnock)
+* [Ryan Brown](https://github.com/RyanBrown870)
+
+  Code Review and Documentation by 
+
+* [Becki Floyd](https://github.com/nass84)
+

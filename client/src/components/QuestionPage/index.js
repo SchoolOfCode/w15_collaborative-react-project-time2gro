@@ -1,4 +1,5 @@
 // Difficulty level Selection Page
+// User can select from Easy, Medium or Hard
 
 import React from "react";
 import ButtonCard from "../ButtonCard";
