@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import HomePage from '../HomePage';
 import VegetablePage from '../VegetablePage';
 import QuestionPage from '../QuestionPage';
@@ -28,6 +28,32 @@ function App() {
   );
   const [vegetableList, setVegetableList] = useState([]);
 
+//   const initialState={
+//     currentPage: "home",
+//     vegetableToSearch: "Tomatoes",
+//     apiData: [],
+//     currentVegetable:{},
+//     answers: answersArray,
+//     userDifficulty:"",
+//     currentQuestion:difficultyLevel,
+//     selectDifficulty:answerDifficultyLevel,
+//     vegetableList:[],
+// }
+  
+//   const [state, dispatch]= useReducer(reducer,initialState);
+  
+//   function reducer(state, action){
+//     // eslint-disable-next-line default-case
+//     switch(action){
+//       case currentPage: ""
+//     return "";
+//     }
+
+//   }
+  
+  
+  
+  
   useEffect(() => {
     async function fetchVegetable() {
       const requestUrl = await fetch(
