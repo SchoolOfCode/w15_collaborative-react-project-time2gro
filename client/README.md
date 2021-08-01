@@ -1,4 +1,7 @@
 
+
+![](2021-08-01-22-59-03.png)
+
 # About Time2Gro
 
 Time2Gro is a website created to help people who are conscious of their food sources and would like to grow their own vergetables. The website aims to equip users with guidance and useful tips to simplify the process of growing their own vegetables.
@@ -10,8 +13,11 @@ There is also the option to allow the app to chose a vegetable on behalf of the 
 
 ## App structure
 - Home page (where users choose their vegetable)
-- vegetable page (information on growing vegetables)
-- difficulty level page (vegetable chosen based on growing difficulty level)
+![](2021-08-01-23-04-11.png)
+- Vegetable page (information on growing vegetables)
+![](2021-08-01-22-57-38.png)
+- Difficulty level page (vegetable chosen based on growing difficulty level)
+![](2021-08-01-22-58-03.png)
 
 
 ## Run Locally
@@ -41,7 +47,6 @@ Start the server
 ```
 
   
-
 ## How the App was created
 
 - App built with javascript, html, and CSS
